@@ -39,6 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::delete('/deleteSarana/{id}', [SaranaController::class, 'deleteSarana'])->name('delete.sarana');
 
     Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman');
+    Route::get('/addPeminjaman', [PeminjamanController::class, 'addPeminjaman'])->name('add.peminjaman');
+    Route::post('/storePeminjaman', [PeminjamanController::class, 'store'])->name('store.peminjaman');
+    Route::delete('/deletePeminjaman/{id}', [PeminjamanController::class, 'deletePeminjaman'])->name('delete.peminjaman');
 
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/addUser', [UserController::class, 'addUser'])->name('add.user');

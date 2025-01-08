@@ -7,8 +7,8 @@
             <h6>Manage your Peminjaman</h6>
         </div>
         <div class="page-btn">
-            <a href="#" class="btn btn-added"><img src="{{ asset('templates/assets/img/icons/plus.svg') }}"
-                    alt="img" />Add Peminjaman</a>
+            <a href="{{ route('admin.add.peminjaman') }}" class="btn btn-added"><img
+                    src="{{ asset('templates/assets/img/icons/plus.svg') }}" alt="img" />Add Peminjaman</a>
         </div>
     </div>
 
@@ -39,8 +39,10 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Sarana</th>
+                            <th>Jumlah Pinjam</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,8 +50,22 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->barang->jenis_barang }}</td>
+                                <td>{{ $item->jumlah_pinjam }}</td>
                                 <td>{{ $item->tanggal_pinjam }}</td>
                                 <td>{{ $item->tanggal_kembali ?? '-' }}</td>
+                                <td class="d-flex align-items-center">
+                                    <form id="deleteForm-{{ $item->id }}"
+                                        action="{{ route('admin.delete.peminjaman', ['id' => $item->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="me-3 confirm-text border border-0 bg-transparent"
+                                            onclick="confirmDelete({{ $item->id }})">
+                                            <img src="{{ asset('templates/assets/img/icons/delete.svg') }}"
+                                                alt="img" />
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
