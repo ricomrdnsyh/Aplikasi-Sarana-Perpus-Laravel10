@@ -56,7 +56,7 @@
                     <div class="dropdown-menu menu-drop-user">
                         <div class="profilename">
                             <hr class="m-0" />
-                            <a class="dropdown-item" href="{{ route('logout') }}">
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}">
                                 <i class="me-2" data-feather="log-out"></i>Logout
                             </a>
                         </div>
@@ -68,7 +68,7 @@
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -89,13 +89,18 @@
                             </a>
                         </li>
                         <li class="menu">
+                            <a href="{{ route('admin.peminjaman') }}"><i data-feather="package"></i>
+                                <span>Data Peminjaman</span>
+                            </a>
+                        </li>
+                        <li class="menu">
                             <a href="{{ route('admin.user') }}"><i data-feather="users"></i>
                                 <span>Data User</span>
                             </a>
                         </li>
                         <hr>
                         <li class="menu">
-                            <a href="{{ route('logout') }}"><i data-feather="log-out"></i>
+                            <a href="{{ route('admin.logout') }}"><i data-feather="log-out"></i>
                                 <span>Logout</span>
                             </a>
                         </li>

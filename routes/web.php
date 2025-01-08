@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SaranaController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,9 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::get('/signup', [LoginController::class, 'daftar'])->name('daftar');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 Route::post('/daftar-proses', [LoginController::class, 'daftar_proses'])->name('daftar-proses');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/sarana', [SaranaController::class, 'index'])->name('sarana');
@@ -37,10 +38,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::put('/updateSarana/{id}', [SaranaController::class, 'updateSarana'])->name('update.sarana');
     Route::delete('/deleteSarana/{id}', [SaranaController::class, 'deleteSarana'])->name('delete.sarana');
 
+    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman');
+
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/addUser', [UserController::class, 'addUser'])->name('add.user');
     Route::post('/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/editUser/{id}', [UserController::class, 'editUser'])->name('edit.user');
     Route::put('/updateUser/{id}', [UserController::class, 'updateUser'])->name('update.user');
     Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser'])->name('delete.user');
+
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

@@ -17,10 +17,16 @@ class Sarana extends Model
         'keterangan',
     ];
 
-    public static function generateKodeBarang(){
+    public static function generateKodeBarang()
+    {
 
         $lastItem = self::orderBy('id', 'desc')->first();
         $number = $lastItem ? (int)substr($lastItem->kode_barang, -4) + 1 : 1;
         return 'INV/PERPUS-UNUJA/' . str_pad($number, 4, '0', STR_PAD_LEFT);
+    }
+
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class, 'id_barang');
     }
 }
