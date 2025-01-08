@@ -30,6 +30,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nama</th>
                             <th>Username</th>
                             <th>Password</th>
                             <th>Action</th>
@@ -39,6 +40,7 @@
                         @foreach ($data as $d)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $d->nama }}</td>
                                 <td>{{ $d->username }}</td>
                                 <td>{{ $d->password }}</td>
                                 <td class="d-flex align-items-center">

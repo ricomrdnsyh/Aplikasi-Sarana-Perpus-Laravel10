@@ -16,6 +16,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="nama" value="{{ $data->nama }}" />
+                            @error('nama')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
                             <label>Username</label>
                             <input type="text" name="username" value="{{ $data->username }}" />
                             @error('username')

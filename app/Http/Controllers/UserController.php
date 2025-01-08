@@ -14,7 +14,8 @@ class UserController extends Controller
         $data = new User;
 
         if($request->get('search')){
-            $data = $data->where('username', 'LIKE', '%'.$request->get('search').'%');
+            $data = $data->where('username', 'LIKE', '%'.$request->get('search').'%')
+                         ->OrWhere('nama', 'LIKE', '%'.$request->get('search').'%');
         }
 
         $data = $data->get();
@@ -29,6 +30,7 @@ class UserController extends Controller
     public function store(Request $request){
 
         $validator = Validator::make($request->all(),[
+            'nama'     => 'required',
             'username' => 'required|unique:users,username',
             'password' => 'required|min:3',
 
@@ -36,6 +38,7 @@ class UserController extends Controller
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $data['nama']     = $request->nama;
         $data['username'] = $request->username;
         $data['password'] = Hash::make($request->password);
 
@@ -53,6 +56,7 @@ class UserController extends Controller
     public function updateuser(Request $request,$id){
 
         $validator = Validator::make($request->all(),[
+            'nama'      => 'required',
             'username'  => 'required',
             'password'  => 'nullable|min:3',
 
@@ -60,6 +64,7 @@ class UserController extends Controller
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $data['nama']           = $request->nama;
         $data['username']       = $request->username;
 
         if($request->password){
