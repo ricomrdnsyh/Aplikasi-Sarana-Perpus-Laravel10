@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li class="menu">
-                            <a href="{{ route('admin.peminjaman') }}"><i data-feather="package"></i>
+                            <a href="{{ route('admin.peminjaman') }}"><i data-feather="folder-minus"></i>
                                 <span>Data Peminjaman</span>
                             </a>
                         </li>
