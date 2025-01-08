@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/signup', [LoginController::class, 'daftar'])->name('daftar');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
+Route::post('/daftar-proses', [LoginController::class, 'daftar_proses'])->name('daftar-proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function(){

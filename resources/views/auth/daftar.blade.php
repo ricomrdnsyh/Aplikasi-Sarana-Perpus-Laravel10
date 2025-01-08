@@ -28,14 +28,24 @@
             <div class="login-wrapper">
                 <div class="login-content">
                     <div class="login-userset">
-                        <form action="{{ route('login-proses') }}" method="POST">
+                        <form action="{{ route('daftar-proses') }}" method="POST">
                             @csrf
                             <div class="login-logo">
                                 <img src="{{ asset('templates/assets/img/logofix.png') }}" alt="img">
                             </div>
                             <div class="login-userheading">
-                                <h3>Sign In</h3>
-                                <h4>Please login to your account</h4>
+                                <h3>Create An Account</h3>
+                                <h4>Continue where you left off</h4>
+                            </div>
+                            <div class="form-login">
+                                <label>Nama Lengkap</label>
+                                <div class="form-addons">
+                                    <input type="text" name="nama" value="{{ old('nama') }}"
+                                        placeholder="Enter your name">
+                                    @error('nama')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-login">
                                 <label>Username</label>
@@ -59,11 +69,11 @@
                                 </div>
                             </div>
                             <div class="form-login">
-                                <button type="submit" class="btn btn-login">Sign In</button>
+                                <button type="submit" class="btn btn-login">Sign Up</button>
                             </div>
                         </form>
                         <div class="signinform text-center">
-                            <h4>Don’t have an account? <a href="{{ route('daftar') }}" class="hover-a">Sign Up</a></h4>
+                            <h4>have an account? <a href="{{ route('login') }}" class="hover-a">Sign In</a></h4>
                         </div>
                     </div>
                 </div>
