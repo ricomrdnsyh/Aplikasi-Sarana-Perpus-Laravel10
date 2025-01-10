@@ -41,7 +41,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="tanggal_kembali" class="form-label">Tanggal Pinjam</label>
+                            <label for="tanggal_kembali" class="form-label">Tanggal Kembali</label>
                             <input type="date" class="form-control mb-2" name="tanggal_kembali" />
                             @error('tanggal_kembali')
                                 <small class="text-danger">{{ $message }}</small>
